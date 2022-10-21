@@ -140,7 +140,6 @@ function scorrimentoAvanti() {
 
 function start(){
     clearInterval(scorrimento);
-    clearInterval(reverse1);
     startStop.removeEventListener("click", start);
     startStop.addEventListener("click", stop);
     startStop.innerText= 'Start';
@@ -148,7 +147,6 @@ function start(){
 
 function stop(){
     clearInterval(scorrimento);
-    clearInterval(reverse1);
     startStop.removeEventListener("click", stop);
     startStop.addEventListener("click", start);
     if (variabileScorrimento === 0) {
@@ -161,15 +159,13 @@ function stop(){
 
 function startInvert(){
     clearInterval(scorrimento);
-    clearInterval(reverse1);
     invert.removeEventListener("click", startInvert);
     invert.addEventListener("click", reverse);
-    reverse1 = setInterval(scorrimentoIndietro,3000)
+    scorrimento = setInterval(scorrimentoIndietro,3000)
 }
 
 function reverse(){
     clearInterval(scorrimento);
-    clearInterval(reverse1);
     invert.removeEventListener("click", reverse);
     invert.addEventListener("click", startInvert);
     scorrimento = setInterval(scorrimentoAvanti, 3000);
