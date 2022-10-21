@@ -143,23 +143,31 @@ function start(){
 }
 
 function stop(){
-    scorrimento = setInterval(scorrimentoAvanti, 3000);
+    clearInterval(scorrimento);
+    clearInterval(reverse1);
     startStop.removeEventListener("click", stop);
     startStop.addEventListener("click", start);
+    if (clearInterval(scorrimento)) {
+        scorrimento = setInterval(scorrimentoAvanti, 3000);
+    }else{
+        reverse1 = setInterval(scorrimentoIndietro,3000)
+    }
     
 }
 
 function startInvert(){
+    clearInterval(scorrimento);
+    clearInterval(reverse1);
     invert.removeEventListener("click", startInvert);
     invert.addEventListener("click", reverse);
-    clearInterval(scorrimento);
     reverse1 = setInterval(scorrimentoIndietro,3000)
 }
 
 function reverse(){
-    startStop.removeEventListener("click", reverse);
-    startStop.addEventListener("click", startInvert);
+    clearInterval(scorrimento);
     clearInterval(reverse1);
+    invert.removeEventListener("click", reverse);
+    invert.addEventListener("click", startInvert);
     scorrimento = setInterval(scorrimentoAvanti, 3000);
 }
 
