@@ -56,6 +56,7 @@ const info = document.querySelector('.info_img');
 const startStop = document.querySelector('.start');
 const invert = document.querySelector('.invert');
 let active = 0;
+let variabileScorrimento = 0;
 let reverse1;
 
 
@@ -86,6 +87,7 @@ nextButton.addEventListener('click', scorrimentoIndietro);
 
 
 function scorrimentoIndietro() {
+    variabileScorrimento = 0;
     const allImageCarousel = document.querySelectorAll('.img_carousel');
     const allImageControls = document.querySelectorAll('.img_controls');
     const allTitles = document.querySelectorAll('h2');
@@ -111,6 +113,7 @@ function scorrimentoIndietro() {
 
 
 function scorrimentoAvanti() {
+    variabileScorrimento = 1;
     const allImageCarousel = document.querySelectorAll('.img_carousel');
     const allImageControls = document.querySelectorAll('.img_controls');
     const allTitles = document.querySelectorAll('h2');
@@ -147,10 +150,10 @@ function stop(){
     clearInterval(reverse1);
     startStop.removeEventListener("click", stop);
     startStop.addEventListener("click", start);
-    if (clearInterval(scorrimento)) {
-        scorrimento = setInterval(scorrimentoAvanti, 3000);
+    if (variabileScorrimento === 0) {
+        scorrimento = setInterval(scorrimentoIndietro, 3000);
     }else{
-        reverse1 = setInterval(scorrimentoIndietro,3000)
+        scorrimento = setInterval(scorrimentoAvanti, 3000);
     }
     
 }
