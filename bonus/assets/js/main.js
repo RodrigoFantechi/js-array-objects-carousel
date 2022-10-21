@@ -143,6 +143,7 @@ function start(){
     clearInterval(reverse1);
     startStop.removeEventListener("click", start);
     startStop.addEventListener("click", stop);
+    startStop.innerText= 'Start';
 }
 
 function stop(){
@@ -155,7 +156,7 @@ function stop(){
     }else{
         scorrimento = setInterval(scorrimentoAvanti, 3000);
     }
-    
+    startStop.innerText= 'Stop';
 }
 
 function startInvert(){
