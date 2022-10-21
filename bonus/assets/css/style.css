@@ -14,6 +14,7 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
+    
 }
 
 .img_carousel {
@@ -74,4 +75,32 @@ body {
 }
 .grayscale{
     filter: grayscale(0%)
+}
+
+
+.info_img {
+position: absolute;
+left: 30px;
+color: white;
+font-weight: bold;
+padding-top: 300px;
+width: 500px;
+height: 500px;
+z-index: 200;
+text-align: left;
+}
+
+h2, p{
+    display: none;   
+}
+.timing_button{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    display: flex;
+    margin-top: 600px;
+    
+}
+.start{
+    margin-right: 1rem;
 }
