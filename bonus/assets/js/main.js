@@ -77,7 +77,7 @@ let scorrimento = setInterval(scorrimentoAvanti, 3000);
 
 startStop.addEventListener('click', start);
 
-invert.addEventListener('click', startInvert);
+invert.addEventListener('click', reverse);
 
 prevButton.addEventListener('click', scorrimentoAvanti);
 
@@ -157,21 +157,13 @@ function stop(){
     startStop.innerText= 'Stop';
 }
 
-function startInvert(){
-    clearInterval(scorrimento);
-    invert.removeEventListener("click", startInvert);
-    invert.addEventListener("click", reverse);
-    scorrimento = setInterval(scorrimentoIndietro,3000)
-    startStop.innerText= 'Stop';
-    startStop.removeEventListener("click", stop);
-    startStop.addEventListener("click", start);
-}
-
 function reverse(){
     clearInterval(scorrimento);
-    invert.removeEventListener("click", reverse);
-    invert.addEventListener("click", startInvert);
-    scorrimento = setInterval(scorrimentoAvanti, 3000);
+    if (variabileScorrimento ===0) {
+        scorrimento = setInterval(scorrimentoAvanti, 3000);
+    }else{
+        scorrimento = setInterval(scorrimentoIndietro, 3000);
+    }
     startStop.innerText= 'Stop';
     startStop.removeEventListener("click", stop);
     startStop.addEventListener("click", start);
