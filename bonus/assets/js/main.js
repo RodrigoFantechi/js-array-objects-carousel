@@ -162,6 +162,9 @@ function startInvert(){
     invert.removeEventListener("click", startInvert);
     invert.addEventListener("click", reverse);
     scorrimento = setInterval(scorrimentoIndietro,3000)
+    startStop.innerText= 'Stop';
+    startStop.removeEventListener("click", stop);
+    startStop.addEventListener("click", start);
 }
 
 function reverse(){
@@ -169,5 +172,8 @@ function reverse(){
     invert.removeEventListener("click", reverse);
     invert.addEventListener("click", startInvert);
     scorrimento = setInterval(scorrimentoAvanti, 3000);
+    startStop.innerText= 'Stop';
+    startStop.removeEventListener("click", stop);
+    startStop.addEventListener("click", start);
 }
 
