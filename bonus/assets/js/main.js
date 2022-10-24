@@ -19,8 +19,6 @@ Aggiungere bottoni di start/stop e di inversione del meccanismo di autoplay.
  */
 
 
-
-
 const images = [
     {
         image: 'img/01.webp',
@@ -57,7 +55,6 @@ const startStop = document.querySelector('.start');
 const invert = document.querySelector('.invert');
 let active = 0;
 let variabileScorrimento = 0;
-let reverse1;
 
 
 images.forEach((element, index) => {
@@ -65,7 +62,6 @@ images.forEach((element, index) => {
     const imageControls = `<img style=" height: calc(100%/${images.length});" class="${(index === active) ? 'grayscale' : ''} img_controls" src=assets/${element.image} alt="">`;
     const titleInfo = `<h2 class="${(index === active) ? 'active' : ''}">${element.title}</h2>
     <p class="${(index === active) ? 'active' : ''}">${element.text}</p>`;
-
     carousel.insertAdjacentHTML('beforeend', imageCarousel);
     controls.insertAdjacentHTML('beforeend', imageControls);
     info.insertAdjacentHTML('beforeend', titleInfo);
@@ -76,15 +72,12 @@ images.forEach((element, index) => {
 let scorrimento = setInterval(scorrimentoAvanti, 3000);
 
 startStop.addEventListener('click', start);
-
 invert.addEventListener('click', reverse);
-
 prevButton.addEventListener('click', scorrimentoAvanti);
-
 nextButton.addEventListener('click', scorrimentoIndietro);
 
 
-
+/* FUNTION */
 
 function scorrimentoIndietro() {
     variabileScorrimento = 0;
@@ -126,7 +119,6 @@ function scorrimentoAvanti() {
     Parag.classList.remove("active");
     elementActive.classList.remove("active");
     elementActive2.classList.remove("grayscale");
-
     if (active === (images.length - 1)) {
         active = 0
     } else {
@@ -137,6 +129,7 @@ function scorrimentoAvanti() {
     allTitles[active].classList.add('active');
     allParag[active].classList.add('active');
 }
+
 
 function start(){
     clearInterval(scorrimento);
